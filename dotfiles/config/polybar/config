@@ -1,0 +1,62 @@
+[bar/mybar]
+width = 100%
+height = 30
+fixed-center = true
+background = #FF121212
+foreground = #FFCCCCCC
+font-0 = "JetBrainsMono Nerd Font:style=Regular:size=12;2"
+font-1 = "Maple Mono NF:style=Solid:size=12;2"
+font-2 = "DejaVu Sans Mono:size=12;2"
+modules-left = i3
+modules-center = datetime
+modules-right = volume cpu ram powermenu
+padding-left = 2
+padding-right = 2
+module-margin = 2
+enable-ipc = true
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+label-focused = " ● %name% |"
+label-unfocused = " ○ %name% |"
+label-visible = " ○ %name% |"
+label-urgent = " ⚠ %name% |"
+
+
+[module/datetime]
+type = internal/date
+interval = 5
+date = " %d.%m."
+time = " %H:%M"
+format = "<label>"
+label = " %date% - %time%"
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <label>
+label = " %percentage%%"
+
+[module/volume]
+type = internal/alsa
+format-volume = <label-volume>
+label-volume = "  %percentage%%"
+format-muted = <label-muted>
+label-muted = " Muted"
+label-padding = 2
+[module/ram]
+type = internal/memory
+format = <label>
+label = "%used%/%total%"
+format-underline = #FFCCCCCC
+
+[module/powermenu]
+type = custom/script
+exec = echo "⏻"
+interval = 0
+click-left = bash ~/powermenu.sh
+format = <label>
+
+
+
